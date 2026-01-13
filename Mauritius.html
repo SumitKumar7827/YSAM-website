@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yogasana Sports Association Mauritius - Official National Body</title>
+    <meta name="description" content="Official National Body for Yogasana Sports in Mauritius. Join the movement, register for championships, and become a certified athlete.">
+    <meta name="keywords" content="yogasana, mauritius, sports, championship, yoga, competition, national, federation">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Yogasana Sports Association Mauritius">
+    <meta property="og:description" content="Official National Body for Yogasana Sports in Mauritius">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://yogasana-mauritius.com/Logo.png">
+    <meta property="og:url" content="https://yogasana-mauritius.com">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yogasana Sports Association Mauritius">
+    <meta name="twitter:description" content="Official National Body for Yogasana Sports in Mauritius">
+    <meta name="twitter:image" content="https://yogasana-mauritius.com/Logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yogasana-mauritius.com">
+    
+    <!-- External Resources with integrity checks -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            background: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* --- PAGE TRANSITIONS --- */
+        .page { 
+            display: none; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 0.6s cubic-bezier(0.22,1,0.36,1);
+        }
+        .page.active { 
+            display: block; 
+            opacity:1; 
+            transform: translateY(0);
+        }
+
+        /* --- NAVIGATION --- */
+        nav { 
+            background: rgba(255,255,255,0.98); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 4px solid #e11d48; 
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05); 
+            z-index:1000; 
+        }
+        nav .nav-links button { 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 2px; 
+            transition: color 0.3s; 
+            position:relative; 
+        }
+        nav .nav-links button:hover { 
+            color: #e11d48; 
+        }
+        nav .nav-links button.active::after { 
+            content:''; 
+            position:absolute; 
+            bottom:-8px; 
+            left:0; 
+            width:100%; 
+            height:3px; 
+            background:#e11d48; 
+            border-radius:2px;
+        }
+
+        /* --- FIXED NEWS TICKER - BELOW NAVIGATION --- */
+        .news-ticker { 
+            position: fixed; 
+            top: 80px;
+            left:0; 
+            width:100%; 
+            background:linear-gradient(90deg, #facc15, #f59e0b); 
+            color:#020617; 
+            padding:10px 0; 
+            font-weight:800; 
+            text-transform:uppercase; 
+            font-size:13px; 
+            overflow:hidden; 
+            border-bottom:3px solid #020617; 
+            z-index:999;
+        }
+        .ticker-track { 
+            display:flex; 
+            white-space:nowrap; 
+            animation: ticker 25s linear infinite; 
+        }
+        .ticker-track span { 
+            margin-right:50px; 
+            display:flex; 
+            align-items:center; 
+            gap:8px; 
+        }
+        @keyframes ticker { 
+            0% { transform:translateX(0); } 
+            100% { transform:translateX(-100%); } 
+        }
+
+        /* --- SOCIAL ICONS --- */
+        .social-float { 
+            position: fixed; 
+            right: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            display:flex; 
+            flex-direction:column; 
+            gap:15px; 
+            z-index:100; 
+        }
+        .social-icon { 
+            width:50px; 
+            height:50px; 
+            background:white; 
+            color:#0f172a; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            border-radius:50%; 
+            box-shadow:0 10px 25px rgba(0,0,0,0.1); 
+            transition:0.4s; 
+            font-size:20px; 
+            border:1px solid #f1f5f9; 
+        }
+        .social-icon:hover { 
+            background:#e11d48; 
+            color:white; 
+            transform:scale(1.1) rotate(360deg); 
+        }
+
+        /* --- REGISTRATION SIDEBAR --- */
+        #reg-sidebar { 
+            position: fixed; 
+            top:0; 
+            right:-100%; 
+            width:450px; 
+            max-width:100%; 
+            height:100%; 
+            background:#fff; 
+            z-index:1000; 
+            transition:0.6s cubic-bezier(0.8,0,0.2,1); 
+            padding:60px 40px; 
+            box-shadow:-20px 0 60px rgba(0,0,0,0.1); 
+            overflow-y:auto;
+        }
+        #reg-sidebar.active { 
+            right:0; 
+        }
+        .overlay { 
+            position: fixed; 
+            inset:0; 
+            background:rgba(0,0,0,0.4); 
+            backdrop-filter: blur(5px); 
+            display:none; 
+            z-index:999; 
+        }
+
+        /* --- VISUAL JOURNEY INFINITE CAROUSEL --- */
+        .marquee-container { 
+            overflow:hidden; 
+            position:relative; 
+            padding:40px 0; 
+        }
+        .marquee-content { 
+            display:flex; 
+            gap:20px; 
+            animation: scroll 50s linear infinite; 
+        }
+        .marquee-content img { 
+            width:400px; 
+            height:280px; 
+            object-fit:cover; 
+            border-radius:30px; 
+            box-shadow:0 10px 20px rgba(0,0,0,0.1); 
+            transition: transform 0.3s; 
+            opacity: 0; 
+        }
+        .marquee-content img.loaded { 
+            opacity: 1; 
+        }
+        .marquee-content img:hover { 
+            transform:scale(1.05); 
+        }
+        @keyframes scroll { 
+            0% { transform:translateX(0); } 
+            100% { transform:translateX(-50%); } 
+        }
+
+        /* --- EXECUTIVE COMMITTEE STYLES --- */
+        .executive-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+        }
+        .executive-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 30px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transition: all 0.3s ease; 
+            border-top: 5px solid #e11d48; 
+        }
+        .executive-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+        }
+        .executive-img { 
+            width: 120px; 
+            height: 120px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin: 0 auto 20px; 
+            border: 5px solid #f8fafc; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            opacity: 0; 
+        }
+        .executive-img.loaded { 
+            opacity: 1; 
+        }
+
+        /* --- PREMIUM ELEMENTS --- */
+        .stat-counter { 
+            transition: all 0.5s ease; 
+        }
+        .stat-counter.animated { 
+            animation: countUp 1s ease-out; 
+        }
+        @keyframes countUp { 
+            from { 
+                opacity: 0.5; 
+                transform: translateY(10px); 
+            } 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        }
+
+        .event-card { 
+            transition: all 0.4s ease; 
+            position:relative; 
+            overflow:hidden; 
+        }
+        .event-card:hover { 
+            transform: translateY(-10px); 
+        }
+        .event-card::after { 
+            content:''; 
+            position:absolute; 
+            bottom:0; 
+            left:0; 
+            width:100%; 
+            height:4px; 
+            background:linear-gradient(90deg, #e11d48, #3b82f6); 
+            transform:scaleX(0); 
+            transition:transform 0.4s ease; 
+        }
+        .event-card:hover::after { 
+            transform:scaleX(1); 
+        }
+
+        .news-card { 
+            position:relative; 
+            transition: all 0.4s ease; 
+        }
+        .news-card:hover .news-date { 
+            transform: translateY(-5px); 
+            color:#e11d48; 
+        }
+        .news-date { 
+            transition: all 0.3s ease; 
+        }
+
+        .loading-spinner { 
+            display:none; 
+            width:30px; 
+            height:30px; 
+            border:3px solid rgba(225,29,72,0.2); 
+            border-radius:50%; 
+            border-top-color:#e11d48; 
+            animation: spin 1s ease-in-out infinite; 
+            margin:0 auto; 
+        }
+        @keyframes spin { 
+            to { 
+                transform: rotate(360deg); 
+            } 
+        }
+
+        .toast { 
+            position:fixed; 
+            bottom:20px; 
+            left:50%; 
+            transform:translateX(-50%) translateY(100px); 
+            background:#10b981; 
+            color:white; 
+            padding:12px 24px; 
+            border-radius:8px; 
+            font-weight:600; 
+            box-shadow:0 10px 25px rgba(0,0,0,0.15); 
+            z-index:1001; 
+            transition:transform 0.4s ease; 
+        }
+        .toast.show { 
+            transform:translateX(-50%) translateY(0); 
+        }
+        .toast.error { 
+            background:#ef4444; 
+        }
+        .toast.warning { 
+            background:#f59e0b; 
+        }
+
+        /* --- IMAGE LOADING STATES --- */
+        img { 
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+        }
+        img.loaded { 
+            opacity: 1; 
+        }
+
+        /* --- FLAG STYLES --- */
+        .flag-container {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            z-index: 10;
+        }
+
+        .flag-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        /* --- GENDER SELECTION STYLES --- */
+        .gender-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .gender-option {
+            flex: 1;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gender-input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .gender-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            background: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .gender-label i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .gender-label .gender-text {
+            font-weight: 700;
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .gender-input:checked + .gender-label {
+            border-color: #e11d48;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.05), rgba(225, 29, 72, 0.1));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(225, 29, 72, 0.1);
+        }
+
+        .gender-input:checked + .gender-label i {
+            color: #e11d48;
+            transform: scale(1.1);
+        }
+
+        .gender-input:checked + .gender-label .gender-text {
+            color: #e11d48;
+        }
+
+        .gender-label:hover {
+            border-color: #94a3b8;
+            transform: translateY(-2px);
+        }
+
+        /* --- HOME PAGE NEW LAYOUT --- */
+        .home-hero-container {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .home-bg-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .home-bg-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .home-logo-section {
+            position: relative;
+            z-index: 2;
+            width: 40%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+
+        .home-logo-wrapper {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+                        0 0 0 1px rgba(255, 255, 255, 0.2),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            max-width: 420px;
+            text-align: center;
+            position: relative;
+        }
+
+        .home-logo-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e11d48, #3b82f6);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .home-logo {
+            height: 180px;
+            width: auto;
+            margin: 0 auto 25px;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+            display: block;
+        }
+
+        .home-flag-container {
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            width: 70px;
+            height: 50px;
+            z-index: 10;
+            background: white;
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .home-flag-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* --- EVENT CALENDAR STYLES --- */
+        .calendar-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar-nav button {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .calendar-nav button:hover {
+            background: #e11d48;
+            color: white;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .calendar-day:hover {
+            background: #f1f5f9;
+        }
+
+        .calendar-day.empty {
+            cursor: default;
+            background: transparent;
+        }
+
+        .calendar-day.today {
+            background: #e11d48;
+            color: white;
+        }
+
+        .calendar-day.event-day {
+            position: relative;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.1), rgba(59, 130, 246, 0.1));
+        }
+
+        .calendar-day.event-day::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #e11d48;
+            border-radius: 50%;
+        }
+
+        .calendar-day.selected {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .event-details-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+
+        /* --- FORM STYLES --- */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+
+        .form-input.valid {
+            border-color: #10b981 !important;
+        }
+
+        .form-input.error {
+            border-color: #ef4444 !important;
+        }
+
+        /* --- LOADING STATES --- */
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* --- MOBILE MENU --- */
+        #mobile-menu { 
+            position:fixed; 
+            top:0; 
+            left:-100%; 
+            width:280px; 
+            height:100%; 
+            background:#fff; 
+            z-index:1001; 
+            transition:0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+            box-shadow:10px 0 30px rgba(0,0,0,0.1); 
+            padding:80px 30px 30px; 
+            overflow-y: auto;
+        }
+        #mobile-menu.active { 
+            left:0; 
+        }
+        .mobile-menu-btn { 
+            display:none; 
+        }
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            .social-float,
+            .news-ticker,
+            nav,
+            button,
+            .overlay,
+            #reg-sidebar,
+            #mobile-menu {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                background: white;
+                color: black;
+            }
+            
+            .page {
+                display: block !important;
+                opacity: 1;
+                transform: none;
+            }
+            
+            a {
+                color: black;
+                text-decoration: underline;
+            }
+        }
+
+        /* --- RESPONSIVE STYLES --- */
+        @media (max-width: 1024px) {
+            .home-hero-container {
+                flex-direction: column;
+            }
+            
+            .home-bg-image {
+                width: 100%;
+                height: 60%;
+            }
+            
+            .home-logo-section {
+                width: 100%;
+                height: 40%;
+                padding: 40px 20px;
+                justify-content: center;
+                background: rgba(0, 0, 0, 0.5);
+            }
+            
+            .home-logo-wrapper {
+                max-width: 380px;
+                padding: 30px;
+            }
+            
+            .home-logo {
+                height: 160px;
+            }
+            
+            .home-flag-container {
+                top: -20px;
+                right: -20px;
+                width: 60px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { 
+                display:block; 
+            }
+            nav .nav-links { 
+                display:none; 
+            }
+            .social-float { 
+                display:none; 
+            }
+            .news-ticker { 
+                top: 70px; 
+                font-size: 11px; 
+                padding: 8px 0; 
+            }
+            .executive-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .marquee-content img { 
+                width: 300px; 
+                height: 200px; 
+            }
+            .flag-container { 
+                width: 60px; 
+                height: 45px; 
+            }
+            .home-logo { 
+                height: 140px; 
+            }
+            .gender-options { 
+                flex-direction: column; 
+            }
+            .gender-label { 
+                padding: 15px; 
+            }
+            #mobile-menu {
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .calendar-days {
+                gap: 2px;
+            }
+            
+            .calendar-day {
+                font-size: 14px;
+            }
+            
+            .home-flag-container {
+                top: -15px;
+                right: -15px;
+                width: 50px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marquee-content img { 
+                width: 250px; 
+                height: 180px; 
+            }
+            .flag-container { 
+                width: 50px; 
+                height: 40px; 
+            }
+            .home-logo { 
+                height: 120px; 
+            }
+            #reg-sidebar {
+                padding: 40px 20px;
+            }
+            
+            .calendar-container {
+                padding: 15px;
+            }
+            
+            .calendar-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .calendar-nav {
+                justify-content: space-between;
+            }
+            
+            .calendar-day {
+                font-size: 12px;
+            }
+            
+            .home-flag-container {
+                top: -10px;
+                right: -10px;
+                width: 40px;
+                height: 30px;
+                padding: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="fixed top-0 w-full z-50" role="navigation" aria-label="Main Navigation">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4 cursor-pointer" onclick="openPage('home')" role="button" tabindex="0" aria-label="Go to Home">
+            <div class="bg-white p-1 rounded-xl shadow-sm">
+                <img src="Logo.png" class="h-14" alt="YSAM Logo" loading="lazy" onerror="handleImageError(this)">
+            </div>
+            <div>
+                <h1 class="font-black uppercase text-blue-950 text-xl tracking-tighter leading-none">Yogasana Sports <span class="text-rose-600">Association Mauritius</span></h1>
+                <p class="text-[9px] font-bold uppercase tracking-[0.3em] text-slate-400">Official National Body</p>
+            </div>
+        </div>
+        
+        <div class="hidden md:flex gap-10 nav-links">
+            <button onclick="openPage('home')" class="active" aria-label="Home Page" role="tab" aria-selected="true">Home</button>
+            <button onclick="openPage('about')" aria-label="About Page" role="tab" aria-selected="false">About</button>
+            <button onclick="openPage('news')" aria-label="News Page" role="tab" aria-selected="false">News</button>
+            <button onclick="openPage('events')" aria-label="Events Page" role="tab" aria-selected="false">Events</button>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <button onclick="toggleMobileMenu()" class="mobile-menu-btn text-2xl text-blue-950" aria-label="Open mobile menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button onclick="toggleSidebar()" class="bg-blue-950 text-white px-8 py-3 rounded-full font-black text-[11px] uppercase shadow-xl hover:bg-rose-600 transition flex items-center gap-2">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- NEWS TICKER - FIXED POSITION BELOW NAV -->
+<div id="home-ticker" class="news-ticker">
+    <div class="ticker-track">
+        <span><i class="fas fa-trophy"></i> Registration Open for 1st National Yogasana Sports Championship 2025</span>
+        <span><i class="fas fa-running"></i> Join the movement today</span>
+        <span><i class="fas fa-calendar-check"></i> Official Selections starting soon</span>
+        <span><i class="fas fa-users"></i> Over 300+ athletes already registered</span>
+        <span><i class="fas fa-map-marker-alt"></i> Championship venue confirmed: Sports Complex</span>
+    </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+    <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl" aria-label="Close mobile menu">&times;</button>
+    <div class="flex flex-col gap-6 mt-10">
+        <button onclick="openPage('home'); toggleMobileMenu();" class="text-left text-xl font-bold text-blue-950 py-3 border-b border-slate-100">Home</button>
+        <button onclick="openPage('about'); toggleMobileMenu();" class="text-left text-xl font-bold text-blue-950 py-3 border-b border-slate-100">About</button>
+        <button onclick="openPage('news'); toggleMobileMenu();" class="text-left text-xl font-bold text-blue-950 py-3 border-b border-slate-100">News</button>
+        <button onclick="openPage('events'); toggleMobileMenu();" class="text-left text-xl font-bold text-blue-950 py-3 border-b border-slate-100">Events</button>
+        <button onclick="toggleSidebar(); toggleMobileMenu();" class="mt-10 bg-rose-600 text-white py-4 rounded-xl font-bold">Register Now</button>
+    </div>
+</div>
+
+<!-- SOCIAL ICONS -->
+<div class="social-float">
+    <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/yogasana_mauritius/?igsh=d3B0eDUxY3dkcWth" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.youtube.com/@worldyogasana" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="mailto:mauritiusyogasana@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+</div>
+
+<!-- REGISTRATION SIDEBAR -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<div id="reg-sidebar">
+    <div class="flex justify-between items-center mb-10">
+        <h2 class="text-5xl font-black uppercase text-blue-950 leading-[0.8]">Athlete<br><span class="text-rose-600 text-3xl">Portal</span></h2>
+        <button onclick="toggleSidebar()" class="text-4xl font-light hover:text-rose-600 transition-transform hover:rotate-90" aria-label="Close registration">&times;</button>
+    </div>
+    
+    <div class="mb-8">
+        <div class="flex gap-2 mb-4">
+            <div class="w-1/3 h-1 bg-rose-600 rounded-full"></div>
+            <div class="w-1/3 h-1 bg-blue-200 rounded-full"></div>
+            <div class="w-1/3 h-1 bg-blue-200 rounded-full"></div>
+        </div>
+        <p class="text-sm font-bold text-slate-500">Personal Details</p>
+    </div>
+    
+    <form id="registrationForm" action="https://formspree.io/f/mvzzppjd" method="POST" class="space-y-6">
+        <input type="hidden" name="_subject" value="New Registration - YSAM">
+        <input type="hidden" name="_replyto" id="replyToEmail" value="">
+        <input type="hidden" name="_honey" style="display:none">
+        <input type="hidden" name="eventName" id="eventNameField" value="">
+        
+        <div>
+            <label for="fullName" class="text-[10px] font-black uppercase text-slate-400 mb-2 block">Full Legal Name *</label>
+            <input type="text" id="fullName" name="fullName" class="w-full border-b-2 border-slate-100 py-3 outline-none focus:border-rose-600 transition text-lg font-bold form-input" placeholder="Enter your full name" required>
+        </div>
+        
+        <div>
+            <label class="text-[10px] font-black uppercase text-slate-400 mb-2 block">Gender *</label>
+            <div class="gender-options">
+                <div class="gender-option">
+                    <input type="radio" id="gender-male" name="gender" value="Male" class="gender-input" required>
+                    <label for="gender-male" class="gender-label">
+                        <i class="fas fa-mars"></i>
+                        <span class="gender-text">Male</span>
+                    </label>
+                </div>
+                <div class="gender-option">
+                    <input type="radio" id="gender-female" name="gender" value="Female" class="gender-input" required>
+                    <label for="gender-female" class="gender-label">
+                        <i class="fas fa-venus"></i>
+                        <span class="gender-text">Female</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <label for="email" class="text-[10px] font-black uppercase text-slate-400 mb-2 block">Email Address *</label>
+            <input type="email" id="email" name="email" class="w-full border-b-2 border-slate-100 py-3 outline-none focus:border-rose-600 transition text-lg font-bold form-input" placeholder="Enter your email" required>
+        </div>
+        
+        <div>
+            <label for="phone" class="text-[10px] font-black uppercase text-slate-400 mb-2 block">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" class="w-full border-b-2 border-slate-100 py-3 outline-none focus:border-rose-600 transition text-lg font-bold form-input" placeholder="+230 XXX XXXX" required>
+            <p class="text-xs text-slate-400 mt-1">Format: +230 5XX XXXX or 0XX XXXX</p>
+        </div>
+        
+        <div>
+            <label for="dob" class="text-[10px] font-black uppercase text-slate-400 mb-2 block">Date of Birth *</label>
+            <input type="date" id="dob" name="dob" class="w-full border-b-2 border-slate-100 py-3 outline-none focus:border-rose-600 transition text-lg font-bold form-input" max="2015-12-31" required>
+        </div>
+        
+        <div>
+            <label for="category" class="text-[10px] font-black uppercase text-slate-400 mb-2 block">Competition Category *</label>
+            <select id="category" name="category" class="w-full border-b-2 border-slate-100 py-3 outline-none bg-transparent font-bold form-input" required>
+                <option value="">Select Category</option>
+                <option value="SUB JUNIOR">SUB JUNIOR (10+ to 14 YEARS)</option>
+                <option value="JUNIOR">JUNIOR (14+ to 18 YEARS)</option>
+                <option value="SENIOR">SENIOR (18+ to 28 YEARS)</option>
+                <option value="SENIOR A">SENIOR A (28+ to 35 YEARS)</option>
+                <option value="SENIOR B">SENIOR B (35+ to 45 YEARS)</option>
+                <option value="SENIOR C">SENIOR C (45+ to 55 YEARS)</option>
+            </select>
+        </div>
+        
+        <div class="pt-4">
+            <div id="formStatus" class="loading-spinner"></div>
+            <button type="submit" id="submitBtn" class="w-full bg-blue-950 text-white py-6 rounded-2xl font-black uppercase tracking-widest shadow-2xl hover:bg-rose-600 transition transform hover:-translate-y-1 flex justify-center items-center gap-2">
+                <i class="fas fa-paper-plane"></i> Submit Application
+            </button>
+            <p class="text-xs text-slate-400 text-center mt-4">By registering, you agree to our <a href="#" class="text-rose-600 font-bold hover:underline">Terms & Conditions</a></p>
+        </div>
+    </form>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+<main class="pt-[140px]">
+
+<!-- HOME PAGE -->
+<section class="page active" id="home">
+    <div class="home-hero-container">
+        <!-- Background Image on Right -->
+        <div class="home-bg-image">
+            <img src="hero section.jpeg" class="loaded" loading="lazy" onerror="handleImageError(this, 'hero')" alt="Yogasana athletes in competition pose">
+        </div>
+        
+        <!-- Big Logo on Left with Flag -->
+        <div class="home-logo-section">
+            <div class="home-logo-wrapper">
+                <!-- Mauritius Flag -->
+                <div class="home-flag-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Mauritius.svg" alt="Mauritius Flag" loading="lazy" onerror="this.src='https://via.placeholder.com/70x50/1a237e/ff3d00?text=MU'">
+                </div>
+                
+                <!-- Big Logo -->
+                <img src="Logo.png" class="home-logo loaded" loading="lazy" alt="YSAM Logo" onerror="handleImageError(this, 'logo')">
+                <h1 class="text-4xl md:text-5xl font-black uppercase text-blue-950 leading-[0.9] mt-4">Yogasana Sports<br><span class="text-rose-600">Association Mauritius</span></h1>
+                <p class="text-slate-600 font-bold uppercase tracking-[0.3em] text-xs mt-3 mb-6">Official National Body</p>
+                
+                <!-- Animated Stats -->
+                <div class="flex justify-center gap-6 mt-8 mb-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-rose-600 stat-counter" id="stat1" data-target="126">0</div>
+                        <div class="text-slate-500 text-xs font-bold uppercase tracking-widest">Athletes</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-rose-600 stat-counter" id="stat2" data-target="8">0</div>
+                        <div class="text-slate-500 text-xs font-bold uppercase tracking-widest">Events</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-rose-600 stat-counter" id="stat3" data-target="25">0</div>
+                        <div class="text-slate-500 text-xs font-bold uppercase tracking-widest">Coaches</div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+                    <button onclick="openPage('about')" class="border-2 border-rose-600 text-rose-600 px-6 py-3 rounded-full font-black uppercase text-xs hover:bg-rose-600 hover:text-white transition">Discover More</button>
+                    <button onclick="toggleSidebar()" class="bg-rose-600 text-white px-6 py-3 rounded-full font-black uppercase text-xs hover:bg-rose-700 transition">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISUAL JOURNEY -->
+    <section class="py-24 bg-white">
+        <h2 class="text-center font-black uppercase text-3xl mb-12 italic tracking-tighter">Visual <span class="text-rose-600 underline">Journey</span></h2>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <img src="3.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Yogasana training session">
+                <img src="4.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Yogasana competition pose">
+                <img src="5.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Group yoga practice">
+                <img src="6.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Advanced asana demonstration">
+                <img src="7.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Yogasana championship event">
+                <img src="8.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Athlete performing asana">
+                <img src="9.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Training workshop">
+                <img src="10.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Meditation session">
+                <img src="11.jpeg" loading="lazy" onerror="handleImageError(this)" alt="International competition">
+                <img src="12.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Team Mauritius practice">
+                <img src="13.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Coaching session">
+                <img src="14.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Award ceremony">
+                <img src="15.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Youth training">
+                <img src="16.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Senior athletes">
+                <img src="17.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Flexibility training">
+                <img src="18.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Balance poses">
+                <img src="19.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Group meditation">
+                <img src="20.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Competition preparation">
+                <img src="21.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Judges panel">
+                <img src="22.jpeg" loading="lazy" onerror="handleImageError(this)" alt="Victory celebration">
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- ABOUT PAGE -->
+<section class="page" id="about">
+    <div class="max-w-7xl mx-auto py-24 px-6">
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-24">
+            <div class="relative">
+                <div class="absolute -bottom-10 -right-10 w-2/3 h-2/3 bg-slate-200 rounded-[4rem] -z-10"></div>
+                <img src="1.jpeg" class="rounded-[4rem] shadow-2xl h-[600px] w-full object-cover loaded" loading="lazy" onerror="handleImageError(this)" alt="YSAM team and athletes">
+            </div>
+            <div>
+                <span class="text-rose-600 font-black uppercase tracking-widest text-xs italic">Our Mission</span>
+                <h2 class="text-6xl font-black uppercase text-blue-950 mt-4 leading-none mb-10">Building <br>Future <span class="text-rose-600">Champs</span></h2>
+                <p class="text-slate-500 text-lg leading-relaxed font-medium mb-8">
+                    The Yogasana Sports Association Mauritius (YSAM) is the official governing body dedicated to promoting Yogasana as a competitive sport nationwide. We provide structured training, international-standard competitions, and holistic athlete development programs.
+                </p>
+                
+                <!-- Interactive Accordion -->
+                <div class="space-y-4 mb-10">
+                    <div class="accordion-item border-b border-slate-100 pb-4">
+                        <button class="accordion-btn w-full flex justify-between items-center text-left font-bold text-blue-950" aria-expanded="false">
+                            <span>Our Vision & Goals</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="accordion-content mt-2 text-slate-500 hidden">
+                            <p>To establish Mauritius as a leading nation in competitive Yogasana by 2030, with athletes competing at World Championships and the Asian Games. We aim to develop 100+ international-level athletes and host regional championships.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-b border-slate-100 pb-4">
+                        <button class="accordion-btn w-full flex justify-between items-center text-left font-bold text-blue-950" aria-expanded="false">
+                            <span>Training Programs</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="accordion-content mt-2 text-slate-500 hidden">
+                            <p>We offer specialized training programs for all age groups, led by certified international coaches with expertise in sports yoga and competitive asanas. Programs include beginner foundations, competitive training, and elite athlete development.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-b border-slate-100 pb-4">
+                        <button class="accordion-btn w-full flex justify-between items-center text-left font-bold text-blue-950" aria-expanded="false">
+                            <span>International Affiliations</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="accordion-content mt-2 text-slate-500 hidden">
+                            <p>YSAM is recognized by the World Yogasana Federation and Asian Yogasana Sports Association. Our athletes compete in international championships and we follow global standards for judging and competition rules.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-8 border-t pt-10">
+                    <div>
+                        <p class="text-4xl font-black text-blue-950 stat-counter" id="counter1" data-target="126">0</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Athletes</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-black text-blue-950 stat-counter" id="counter2" data-target="25">0</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Certified Coaches</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXECUTIVE COMMITTEE SECTION -->
+        <div class="mt-32">
+            <div class="text-center mb-16">
+                <span class="text-rose-600 font-black uppercase tracking-widest text-xs italic">Leadership</span>
+                <h2 class="text-6xl font-black uppercase text-blue-950 mt-4 leading-none">Executive <span class="text-rose-600">Committee</span></h2>
+                <p class="text-slate-500 text-lg max-w-3xl mx-auto mt-6">Meet the dedicated leaders who guide YSAM's mission to promote competitive Yogasana in Mauritius.</p>
+            </div>
+            
+            <div class="executive-grid">
+                <!-- President -->
+                <div class="executive-card">
+                    <img src="Anand Mooruth- President.jpeg" alt="President" class="executive-img loaded" loading="lazy" onerror="handleImageError(this, 'executive')">
+                    <h3 class="text-xl font-black text-blue-950 mb-2">Anand Mooruth- President</h3>
+                    <p class="text-rose-600 font-bold mb-3">President & Chairman</p>
+                    <p class="text-slate-500 text-sm">Former national athlete with 20+ years experience in sports administration. PhD in Sports Science from University of Mauritius.</p>
+                </div>
+                
+                <!-- Vice President -->
+                <div class="executive-card">
+                    <img src="jpeg" alt="Vice President" class="executive-img loaded" loading="lazy" onerror="handleImageError(this, 'executive')">
+                    <h3 class="text-xl font-black text-blue-950 mb-2">Evenor Kerloys Emmanuelain</h3>
+                    <p class="text-rose-600 font-bold mb-3">Vice President</p>
+                    <p class="text-slate-500 text-sm">International Yogasana judge certified by World Federation. Former competitive athlete representing Mauritius.</p>
+                </div>
+                
+                <!-- General Secretary -->
+                <div class="executive-card">
+                    <img src="Secretary -Bharti Shibdutt.jpeg" alt="General Secretary" class="executive-img loaded" loading="lazy" onerror="handleImageError(this, 'executive')">
+                    <h3 class="text-xl font-black text-blue-950 mb-2">Bharti Shibdutt</h3>
+                    <p class="text-rose-600 font-bold mb-3">Secretary</p>
+                    <p class="text-slate-500 text-sm">Expert in sports federation management and athlete development programs.</p>
+                </div>
+                
+                <!-- Treasurer -->
+                <div class="executive-card">
+                    <img src="jpeg" alt="Treasurer" class="executive-img loaded" loading="lazy" onerror="handleImageError(this, 'executive')">
+                    <h3 class="text-xl font-black text-blue-950 mb-2">Asha Ramessur</h3>
+                    <p class="text-rose-600 font-bold mb-3">Treasurer</p>
+                    <p class="text-slate-500 text-sm">Chartered Accountant with specialization in sports finance. Manages federation budget and sponsorship programs.</p>
+                </div>
+                
+                <!-- Assistant Secretary -->
+                <div class="executive-card">
+                    <img src="jpeg" alt="Assistant Secretary" class="executive-img loaded" loading="lazy" onerror="handleImageError(this, 'executive')">
+                    <h3 class="text-xl font-black text-blue-950 mb-2">Rajesh kumar Beegun</h3>
+                    <p class="text-rose-600 font-bold mb-3">Assistant Secretary</p>
+                    <p class="text-slate-500 text-sm">Sports management professional with expertise in event organization and athlete coordination.</p>
+                </div>
+                
+                <!-- Assistant Treasurer -->
+                <div class="executive-card">
+                    <img src="jpeg" alt="Assistant Treasurer" class="executive-img loaded" loading="lazy" onerror="handleImageError(this, 'executive')">
+                    <h3 class="text-xl font-black text-blue-950 mb-2">Ambicadutt Bheecarry</h3>
+                    <p class="text-rose-600 font-bold mb-3">Assistant Treasurer</p>
+                    <p class="text-slate-500 text-sm">Finance specialist responsible for managing membership fees and event budgets.</p>
+                </div>
+                
+                <!-- Auditor -->
+                <div class="executive-card">
+                    <img src="Kevin Gobind- Auditor.jpeg" alt="Auditor" class="executive-img loaded" loading="lazy" onerror="handleImageError(this, 'executive')">
+                    <h3 class="text-xl font-black text-blue-950 mb-2">Kevin Gobind</h3>
+                    <p class="text-rose-600 font-bold mb-3">Auditor</p>
+                    <p class="text-slate-500 text-sm">Certified auditor ensuring financial transparency and compliance with sports federation regulations.</p>
+                </div>
+            </div>
+            
+            <!-- Committee Stats -->
+            <div class="bg-gradient-to-r from-blue-950 to-rose-700 text-white p-12 rounded-3xl shadow-xl mt-20">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-5xl font-black mb-2">7</div>
+                        <div class="text-white/80 text-sm font-bold uppercase tracking-widest">Committee Members</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-black mb-2">95+</div>
+                        <div class="text-white/80 text-sm font-bold uppercase tracking-widest">Years Combined Experience</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-black mb-2">15</div>
+                        <div class="text-white/80 text-sm font-bold uppercase tracking-widest">International Certifications</div>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-black mb-2">100%</div>
+                        <div class="text-white/80 text-sm font-bold uppercase tracking-widest">Volunteer Leadership</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEWS PAGE -->
+<section class="page" id="news">
+    <div class="max-w-7xl mx-auto py-24 px-6">
+        <h2 class="text-6xl font-black uppercase mb-16 italic text-center text-blue-950">Latest <span class="text-rose-600">Updates</span></h2>
+        
+        <!-- News Filter -->
+        <div class="flex justify-center gap-4 mb-12 flex-wrap">
+            <button class="news-filter active bg-rose-600 text-white px-6 py-3 rounded-full font-bold text-xs" data-filter="all">All News</button>
+            <button class="news-filter bg-blue-100 text-blue-950 px-6 py-3 rounded-full font-bold text-xs" data-filter="championship">Championships</button>
+            <button class="news-filter bg-blue-100 text-blue-950 px-6 py-3 rounded-full font-bold text-xs" data-filter="training">Training</button>
+            <button class="news-filter bg-blue-100 text-blue-950 px-6 py-3 rounded-full font-bold text-xs" data-filter="announcement">Announcements</button>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8" id="news-container">
+            <div class="news-card bg-white p-12 rounded-[3rem] shadow-xl hover:shadow-2xl transition border-t-8 border-rose-600" data-category="championship">
+                <p class="news-date text-rose-600 font-black text-[10px] uppercase tracking-widest mb-4 italic"><i class="fas fa-calendar-alt mr-2"></i> March 15, 2025</p>
+                <h3 class="text-3xl font-black uppercase text-blue-950 leading-none">Championship Venue Confirmed for 2025</h3>
+                <p class="mt-6 text-slate-500 font-medium">The national event will take place at the newly renovated Port Louis Sports Complex with international observers from 15+ countries.</p>
+                <button class="mt-8 text-rose-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="news-card bg-white p-12 rounded-[3rem] shadow-xl hover:shadow-2xl transition border-t-8 border-blue-950" data-category="announcement">
+                <p class="news-date text-slate-400 font-black text-[10px] uppercase tracking-widest mb-4 italic"><i class="fas fa-calendar-alt mr-2"></i> March 10, 2025</p>
+                <h3 class="text-3xl font-black uppercase text-blue-950 leading-none">New Judging Criteria Released</h3>
+                <p class="mt-6 text-slate-500 font-medium">Download the updated YSAM ruleset for the upcoming competitive season, aligned with international standards.</p>
+                <button class="mt-8 text-blue-950 font-bold flex items-center gap-2 hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="news-card bg-white p-12 rounded-[3rem] shadow-xl hover:shadow-2xl transition border-t-8 border-green-600" data-category="training">
+                <p class="news-date text-green-600 font-black text-[10px] uppercase tracking-widest mb-4 italic"><i class="fas fa-calendar-alt mr-2"></i> March 5, 2025</p>
+                <h3 class="text-3xl font-black uppercase text-blue-950 leading-none">Summer Training Camp Announcement</h3>
+                <p class="mt-6 text-slate-500 font-medium">Intensive 2-week training camp with international coaches for selected athletes. Applications open until April 15.</p>
+                <button class="mt-8 text-green-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="news-card bg-white p-12 rounded-[3rem] shadow-xl hover:shadow-2xl transition border-t-8 border-amber-500" data-category="championship">
+                <p class="news-date text-amber-500 font-black text-[10px] uppercase tracking-widest mb-4 italic"><i class="fas fa-calendar-alt mr-2"></i> February 28, 2025</p>
+                <h3 class="text-3xl font-black uppercase text-blue-950 leading-none">International Participation Confirmed</h3>
+                <p class="mt-6 text-slate-500 font-medium">Teams from India, Nepal, and Sri Lanka will participate in the 2025 National Championship, elevating competition standards.</p>
+                <button class="mt-8 text-amber-500 font-bold flex items-center gap-2 hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EVENTS PAGE -->
+<section class="page" id="events">
+    <div class="max-w-7xl mx-auto py-24 px-6">
+        <h2 class="text-6xl font-black uppercase mb-16 italic text-center text-blue-950">Upcoming <span class="text-rose-600">Events</span></h2>
+        
+        <!-- FUNCTIONAL EVENT CALENDAR -->
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <h3 class="text-2xl font-black text-blue-950" id="calendar-month-year">March 2025</h3>
+                <div class="calendar-nav">
+                    <button id="prev-month" aria-label="Previous month"><i class="fas fa-chevron-left"></i></button>
+                    <button id="today-btn" class="text-sm px-4 py-2 rounded-lg bg-rose-600 text-white hover:bg-rose-700">Today</button>
+                    <button id="next-month" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="calendar-weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            
+            <div class="calendar-days" id="calendar-days">
+                <!-- Calendar days will be generated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Event Details Panel -->
+        <div class="event-details-panel" id="event-details" style="display: none;">
+            <h3 class="text-2xl font-black text-blue-950 mb-4" id="event-details-title">Event Details</h3>
+            <div id="event-details-content">
+                <!-- Event details will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Event Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="events-container">
+            <div class="event-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-4 border-rose-600">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-2xl font-black text-blue-950 mb-2">National Yogasana Championship 2025</h3>
+                        <p class="text-slate-500 font-medium text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Port Louis Sports Complex</p>
+                    </div>
+                    <span class="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-xs font-bold">Featured</span>
+                </div>
+                <p class="text-slate-500 font-medium text-sm mb-6">The premier national competition featuring top athletes from across Mauritius competing for national titles.</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-blue-950 font-bold"><i class="fas fa-calendar-alt mr-2"></i>15-17 June 2025</p>
+                    <button onclick="registerForEvent('National Yogasana Championship 2025')" class="bg-rose-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-rose-500 transition">Register</button>
+                </div>
+            </div>
+            
+            <div class="event-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-4 border-blue-950">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-2xl font-black text-blue-950 mb-2">Junior Yogasana Meet 2025</h3>
+                        <p class="text-slate-500 font-medium text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Beau Bassin Sports Hall</p>
+                    </div>
+                    <span class="bg-blue-100 text-blue-950 px-3 py-1 rounded-full text-xs font-bold">Junior</span>
+                </div>
+                <p class="text-slate-500 font-medium text-sm mb-6">Exclusive competition for junior athletes aged 14-18, with special categories for beginners and intermediates.</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-blue-950 font-bold"><i class="fas fa-calendar-alt mr-2"></i>10-12 July 2025</p>
+                    <button onclick="registerForEvent('Junior Yogasana Meet 2025')" class="bg-blue-950 text-white px-6 py-3 rounded-xl font-bold hover:bg-rose-500 transition">Register</button>
+                </div>
+            </div>
+            
+            <div class="event-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-4 border-green-600">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-2xl font-black text-blue-950 mb-2">Senior Invitational 2025</h3>
+                        <p class="text-slate-500 font-medium text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Curepipe Gymnasium</p>
+                    </div>
+                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-bold">Senior</span>
+                </div>
+                <p class="text-slate-500 font-medium text-sm mb-6">Invitation-only event for top senior athletes, with qualification spots for international competitions.</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-blue-950 font-bold"><i class="fas fa-calendar-alt mr-2"></i>20-22 Aug 2025</p>
+                    <button onclick="registerForEvent('Senior Invitational 2025')" class="bg-green-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-rose-500 transition">Register</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Registration Counter -->
+        <div class="mt-16 bg-gradient-to-r from-blue-950 to-rose-700 text-white p-8 rounded-3xl shadow-xl">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-2xl font-black mb-2">Don't Miss Out!</h3>
+                    <p class="text-white/80">Limited spots available for each event. Register today to secure your participation.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black" id="registeredCount">150+</div>
+                    <div class="text-white/80 text-sm">Already Registered</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-blue-950 text-white py-24 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-center">
+        <div class="flex flex-col items-center md:items-start">
+            <div class="bg-white p-4 rounded-3xl mb-6 shadow-2xl">
+                <img src="Logo.png" class="h-20 loaded" loading="lazy" alt="YSAM Logo" onerror="handleImageError(this, 'logo')">
+            </div>
+            <p class="font-black uppercase tracking-widest text-xs text-center md:text-left">Yogasana Sports Association<br><span class="text-rose-600">Mauritius</span></p>
+        </div>
+        
+        <div class="text-center">
+            <h4 class="font-bold uppercase text-sm mb-6">Quick Links</h4>
+            <div class="flex flex-col gap-3">
+                <a href="#" onclick="openPage('home')" class="text-white/70 hover:text-rose-600 transition hover:underline">Home</a>
+                <a href="#" onclick="openPage('about')" class="text-white/70 hover:text-rose-600 transition hover:underline">About Us</a>
+                <a href="#" onclick="openPage('news')" class="text-white/70 hover:text-rose-600 transition hover:underline">News & Updates</a>
+                <a href="#" onclick="openPage('events')" class="text-white/70 hover:text-rose-600 transition hover:underline">Events Calendar</a>
+                <a href="#" onclick="toggleSidebar()" class="text-rose-600 font-bold hover:underline">Register Now</a>
+            </div>
+        </div>
+        
+        <div class="text-center md:text-right">
+            <h4 class="font-bold uppercase text-sm mb-6">Contact Information</h4>
+            <div class="space-y-3">
+                <p class="text-white/70"><i class="fas fa-map-marker-alt mr-2"></i>Mauritius</p>
+                <p class="text-white/70"><i class="fas fa-phone mr-2"></i> +230 5810 5095</p>
+                <p class="text-white/70"><i class="fas fa-envelope mr-2"></i> mauritiusyogasana@gmail.com</p>
+            </div>
+            <div class="flex justify-center md:justify-end gap-4 mt-6">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-gray-800/50 border border-gray-700 rounded-2xl flex items-center justify-center hover:bg-[#1877F2] hover:-translate-y-2 transition-all" aria-label="Facebook">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/yogasana_mauritius?igsh=d3B0eDUxY3dkcWth" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-gray-800/50 border border-gray-700 rounded-2xl flex items-center justify-center hover:bg-pink-600 hover:-translate-y-2 transition-all" aria-label="Instagram">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="https://www.youtube.com/@worldyogasana" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-gray-800/50 border border-gray-700 rounded-2xl flex items-center justify-center hover:bg-red-600 hover:-translate-y-2 transition-all" aria-label="YouTube">
+                    <i class="fab fa-youtube text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center">
+        <p class="text-[10px] font-bold text-slate-500">© 2025 YSAM • Member of World Yogasana Federation • All Rights Reserved</p>
+        <p class="text-xs text-white/50 mt-2">Website last updated: <span id="currentDate"></span></p>
+    </div>
+</footer>
+
+</main>
+
+<script>
+// =============================================
+// INITIALIZATION
+// =============================================
+
+// Current date for footer
+document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+});
+
+// =============================================
+// GLOBAL VARIABLES FOR CALENDAR
+// =============================================
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+
+// =============================================
+// IMAGE HANDLING
+// =============================================
+function handleImageError(img, type = 'general') {
+    const placeholders = {
+        'logo': 'https://via.placeholder.com/180x180/1e3a8a/ffffff?text=YSAM',
+        'hero': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+        'executive': 'https://via.placeholder.com/120x120/1e3a8a/ffffff?text=YSAM',
+        'general': 'https://via.placeholder.com/400x300/1e3a8a/ffffff?text=YSAM+Image'
+    };
+    
+    const placeholder = placeholders[type] || placeholders.general;
+    
+    // Prevent infinite loop
+    if (img.src !== placeholder) {
+        img.src = placeholder;
+        img.alt = type === 'logo' ? 'YSAM Logo' : type === 'hero' ? 'Yogasana Hero Image' : 'YSAM Image';
+    }
+}
+
+// =============================================
+// PAGE NAVIGATION
+// =============================================
+function openPage(id){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('home-ticker').style.display = (id === 'home') ? 'block' : 'none';
+    
+    // Update active nav link
+    document.querySelectorAll('nav .nav-links button').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+    });
+    
+    if(id === 'home') {
+        document.querySelector('nav .nav-links button:first-child').classList.add('active');
+        document.querySelector('nav .nav-links button:first-child').setAttribute('aria-selected', 'true');
+    } else {
+        const btn = Array.from(document.querySelectorAll('nav .nav-links button')).find(b => 
+            b.textContent.toLowerCase() === id
+        );
+        if(btn) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+        }
+    }
+    
+    window.scrollTo({top:0, behavior:'smooth'});
+    
+    // Trigger animations for counters on page load
+    if(id === 'home' || id === 'about') {
+        setTimeout(() => animateCounters(), 300);
+    }
+    
+    // Initialize calendar when opening events page
+    if(id === 'events') {
+        setTimeout(() => {
+            initializeCalendar();
+        }, 100);
+    }
+    
+    // Save to session storage
+    sessionStorage.setItem('ysam_current_page', id);
+}
+
+// =============================================
+// ANIMATED COUNTERS
+// =============================================
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-counter');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target') || '0');
+        
+        // Reset to 0 for animation
+        counter.textContent = '0';
+        
+        const updateCounter = () => {
+            const current = parseInt(counter.textContent);
+            const increment = Math.ceil(target / 50); // Complete in 50 steps
+            
+            if(current < target) {
+                counter.textContent = Math.min(current + increment, target).toString();
+                setTimeout(updateCounter, 20);
+            } else {
+                counter.classList.add('animated');
+            }
+        };
+        
+        updateCounter();
+    });
+}
+
+// =============================================
+// REGISTRATION SIDEBAR
+// =============================================
+function toggleSidebar(){
+    const sidebar = document.getElementById('reg-sidebar');
+    const overlay = document.getElementById('overlay');
+    const isActive = sidebar.classList.toggle('active');
+    
+    overlay.style.display = isActive ? 'block' : 'none';
+    document.body.style.overflow = isActive ? 'hidden' : 'auto';
+    
+    // Load saved form data when opening
+    if(isActive) {
+        setTimeout(() => loadSavedFormData(), 100);
+    }
+}
+
+// =============================================
+// EVENT REGISTRATION WITH FORMSPREE INTEGRATION
+// =============================================
+function registerForEvent(eventName) {
+    // Open the registration sidebar
+    toggleSidebar();
+    
+    // Pre-fill event information in form
+    setTimeout(() => {
+        // Set event name in hidden field
+        const eventField = document.getElementById('eventNameField');
+        if (eventField) {
+            eventField.value = eventName;
+        }
+        
+        // Auto-select category based on event name
+        const categorySelect = document.getElementById('category');
+        if (eventName.includes('Junior')) {
+            categorySelect.value = 'JUNIOR';
+        } else if (eventName.includes('Senior')) {
+            categorySelect.value = 'SENIOR';
+        } else if (eventName.includes('Sub-Junior')) {
+            categorySelect.value = 'SUB JUNIOR';
+        }
+        
+        // Update form subject
+        const subjectField = document.querySelector('input[name="_subject"]');
+        if (subjectField) {
+            subjectField.value = `Event Registration - ${eventName}`;
+        }
+        
+        // Show informative toast
+        showToast(`Now registering for: ${eventName}. Please complete the form below.`, 'info');
+        
+        // Focus on the first form field
+        setTimeout(() => {
+            document.getElementById('fullName').focus();
+        }, 500);
+    }, 300);
+}
+
+// =============================================
+// MOBILE MENU
+// =============================================
+function toggleMobileMenu(){
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.querySelector('.mobile-menu-btn');
+    const isActive = menu.classList.toggle('active');
+    
+    btn.setAttribute('aria-expanded', isActive);
+    document.body.style.overflow = isActive ? 'hidden' : 'auto';
+}
+
+// =============================================
+// NEWS FILTERING
+// =============================================
+document.querySelectorAll('.news-filter').forEach(filter => {
+    filter.addEventListener('click', function() {
+        // Update active filter
+        document.querySelectorAll('.news-filter').forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+        
+        const category = this.getAttribute('data-filter');
+        const newsCards = document.querySelectorAll('.news-card');
+        
+        newsCards.forEach(card => {
+            if(category === 'all' || card.getAttribute('data-category') === category) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => card.style.display = 'none', 300);
+            }
+        });
+    });
+});
+
+// =============================================
+// ACCORDION FUNCTIONALITY
+// =============================================
+document.querySelectorAll('.accordion-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        const isExpanded = content.classList.contains('hidden');
+        
+        // Toggle current accordion
+        content.classList.toggle('hidden');
+        icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+        
+        // Update aria-expanded
+        this.setAttribute('aria-expanded', isExpanded.toString());
+        
+        // Close other accordions (optional)
+        document.querySelectorAll('.accordion-content').forEach(otherContent => {
+            if(otherContent !== content && !otherContent.classList.contains('hidden')) {
+                otherContent.classList.add('hidden');
+                otherContent.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                otherContent.previousElementSibling.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+});
+
+// =============================================
+// FORM VALIDATION FUNCTIONS
+// =============================================
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validatePhone(phone) {
+    // Mauritius phone number validation
+    const phoneRegex = /^(\+230|0)?\s*(5\d{2}|4\d{2}|3\d{2})\s*(\d{4})$/;
+    return phoneRegex.test(phone.replace(/\s/g, ''));
+}
+
+function validateDateOfBirth(dob) {
+    const birthDate = new Date(dob);
+    const today = new Date();
+    const age = today.getFullYear() - birthDate.getFullYear();
+    return age >= 10 && age <= 55;
+}
+
+// Real-time form validation
+document.querySelectorAll('#registrationForm input, #registrationForm select').forEach(input => {
+    input.addEventListener('blur', function() {
+        validateField(this);
+    });
+    
+    input.addEventListener('input', function() {
+        validateField(this);
+    });
+});
+
+function validateField(field) {
+    const value = field.value.trim();
+    field.classList.remove('valid', 'error');
+    
+    if (!value) {
+        field.classList.add('error');
+        return false;
+    }
+    
+    switch(field.id) {
+        case 'email':
+            if (!validateEmail(value)) {
+                field.classList.add('error');
+                return false;
+            }
+            break;
+        case 'phone':
+            if (!validatePhone(value)) {
+                field.classList.add('error');
+                return false;
+            }
+            break;
+        case 'dob':
+            if (!validateDateOfBirth(value)) {
+                field.classList.add('error');
+                return false;
+            }
+            break;
+    }
+    
+    field.classList.add('valid');
+    return true;
+}
+
+// =============================================
+// FORM SUBMISSION TO FORMSPREE
+// =============================================
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.innerHTML;
+    
+    // Add loading state
+    submitBtn.classList.add('btn-loading');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="opacity-0">Processing...</span>';
+    
+    const formStatus = document.getElementById('formStatus');
+    formStatus.style.display = 'block';
+    
+    // Validate all required fields
+    const requiredFields = ['fullName', 'email', 'phone', 'dob', 'category'];
+    let isValid = true;
+    
+    requiredFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (!field.value.trim()) {
+            isValid = false;
+            field.classList.add('error');
+        }
+    });
+    
+    // Validate gender selection
+    const genderSelected = document.querySelector('input[name="gender"]:checked');
+    if (!genderSelected) {
+        isValid = false;
+        document.querySelectorAll('.gender-label').forEach(label => {
+            label.style.borderColor = '#ef4444';
+        });
+        showToast('Please select your gender', 'error');
+    }
+    
+    // Validate specific fields
+    const email = document.getElementById('email');
+    const phone = document.getElementById('phone');
+    const dob = document.getElementById('dob');
+    
+    if (!validateEmail(email.value)) {
+        isValid = false;
+        email.classList.add('error');
+        showToast('Please enter a valid email address', 'error');
+    }
+    
+    if (!validatePhone(phone.value)) {
+        isValid = false;
+        phone.classList.add('error');
+        showToast('Please enter a valid Mauritius phone number', 'error');
+    }
+    
+    if (!validateDateOfBirth(dob.value)) {
+        isValid = false;
+        dob.classList.add('error');
+        showToast('Age must be between 10 and 55 years', 'error');
+    }
+    
+    if (!isValid) {
+        formStatus.style.display = 'none';
+        submitBtn.classList.remove('btn-loading');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        showToast('Please fill all required fields correctly', 'error');
+        return;
+    }
+    
+    // Save form data to localStorage
+    const formData = new FormData(this);
+    for(let [key, value] of formData.entries()) {
+        if(value) localStorage.setItem(`ysam_form_${key}`, value);
+    }
+    
+    // Update reply-to email
+    document.getElementById('replyToEmail').value = email.value;
+    
+    // Submit to Formspree
+    fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        formStatus.style.display = 'none';
+        
+        if (response.ok) {
+            // Show success toast
+            showToast('Registration submitted successfully! We will contact you soon.', 'success');
+            
+            // Update registration counter
+            const countElem = document.getElementById('registeredCount');
+            let currentCount = parseInt(countElem.textContent) || 150;
+            countElem.textContent = (currentCount + 1).toString() + '+';
+            
+            // Clear localStorage for this form
+            Object.keys(localStorage).forEach(key => {
+                if(key.startsWith('ysam_form_')) {
+                    localStorage.removeItem(key);
+                }
+            });
+            
+            // Reset form
+            this.reset();
+            
+            // Close sidebar after successful submission
+            setTimeout(() => {
+                toggleSidebar();
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }, 1500);
+        } else {
+            showToast('There was an error submitting the form. Please try again.', 'error');
+            submitBtn.classList.remove('btn-loading');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        }
+    })
+    .catch(error => {
+        formStatus.style.display = 'none';
+        showToast('Network error. Please check your connection and try again.', 'error');
+        submitBtn.classList.remove('btn-loading');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+    });
+});
+
+// =============================================
+// LOAD SAVED FORM DATA
+// =============================================
+function loadSavedFormData() {
+    document.querySelectorAll('#registrationForm input, #registrationForm select').forEach(input => {
+        const savedValue = localStorage.getItem(`ysam_form_${input.name || input.id}`);
+        if(savedValue && input.value === '') {
+            input.value = savedValue;
+            validateField(input);
+        }
+    });
+    
+    // Load saved gender
+    const savedGender = localStorage.getItem('ysam_form_gender');
+    if(savedGender) {
+        const genderRadio = document.querySelector(`input[name="gender"][value="${savedGender}"]`);
+        if(genderRadio) {
+            genderRadio.checked = true;
+            document.querySelectorAll('.gender-label').forEach(label => {
+                if(label.previousElementSibling.value === savedGender) {
+                    label.style.borderColor = '#e11d48';
+                }
+            });
+        }
+    }
+}
+
+// =============================================
+// TOAST NOTIFICATION
+// =============================================
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = 'toast';
+    
+    if(type === 'error') {
+        toast.classList.add('error');
+    } else if(type === 'warning') {
+        toast.classList.add('warning');
+    }
+    
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+// =============================================
+// IMAGE LOADING HANDLER
+// =============================================
+function handleImageLoad() {
+    document.querySelectorAll('img').forEach(img => {
+        if(img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+            img.addEventListener('error', function() {
+                handleImageError(this);
+                this.classList.add('loaded');
+            });
+        }
+    });
+}
+
+// =============================================
+// COMPLETE EVENTS DATA FOR CALENDAR
+// =============================================
+const eventsData = {
+    '2025': {
+        '2': { // March
+            '7': { name: 'Junior Training Workshop', type: 'training', color: 'amber' },
+            '15': { name: 'National Championship Registration Opens', type: 'registration', color: 'blue' },
+            '18': { name: 'Coaches Meeting', type: 'meeting', color: 'slate' },
+            '25': { name: 'Yogasana Masterclass', type: 'training', color: 'amber' },
+            '28': { name: 'Selection Trials', type: 'competition', color: 'rose' },
+            '30': { name: 'Media Briefing', type: 'announcement', color: 'green' }
+        },
+        '3': { // April
+            '5': { name: 'Yogasana Training Camp - Day 1', type: 'training', color: 'amber' },
+            '6': { name: 'Yogasana Training Camp - Day 2', type: 'training', color: 'amber' },
+            '7': { name: 'Yogasana Training Camp - Day 3', type: 'training', color: 'amber' },
+            '8': { name: 'Yogasana Training Camp - Day 4', type: 'training', color: 'amber' },
+            '9': { name: 'Yogasana Training Camp - Day 5', type: 'training', color: 'amber' },
+            '15': { name: 'Technical Committee Meeting', type: 'meeting', color: 'slate' },
+            '22': { name: 'Referee Certification', type: 'certification', color: 'purple' },
+            '28': { name: 'Equipment Inspection', type: 'preparation', color: 'indigo' }
+        },
+        '4': { // May
+            '10': { name: 'Pre-Competition Workshop', type: 'training', color: 'amber' },
+            '15': { name: 'Athlete Medical Checkups', type: 'health', color: 'green' },
+            '20': { name: 'Team Selection Announcement', type: 'announcement', color: 'green' },
+            '25': { name: 'International Judges Workshop - Day 1', type: 'workshop', color: 'purple' },
+            '26': { name: 'International Judges Workshop - Day 2', type: 'workshop', color: 'purple' },
+            '27': { name: 'International Judges Workshop - Day 3', type: 'workshop', color: 'purple' },
+            '30': { name: 'Final Registration Deadline', type: 'registration', color: 'blue' }
+        },
+        '5': { // June
+            '1': { name: 'Championship Preparation Week', type: 'preparation', color: 'indigo' },
+            '5': { name: 'Venue Setup Begins', type: 'preparation', color: 'indigo' },
+            '10': { name: 'Technical Officials Arrival', type: 'arrival', color: 'teal' },
+            '14': { name: 'Opening Ceremony Rehearsal', type: 'rehearsal', color: 'pink' },
+            '15': { name: 'National Yogasana Championship - Day 1', type: 'championship', color: 'rose' },
+            '16': { name: 'National Yogasana Championship - Day 2', type: 'championship', color: 'rose' },
+            '17': { name: 'National Yogasana Championship - Day 3', type: 'championship', color: 'rose' },
+            '20': { name: 'Award Ceremony & Closing', type: 'ceremony', color: 'yellow' },
+            '25': { name: 'Post-Event Review Meeting', type: 'meeting', color: 'slate' }
+        },
+        '6': { // July
+            '1': { name: 'Junior Competition Preparation', type: 'preparation', color: 'indigo' },
+            '5': { name: 'Coach Development Program', type: 'training', color: 'amber' },
+            '10': { name: 'Junior Yogasana Meet - Day 1', type: 'competition', color: 'blue' },
+            '11': { name: 'Junior Yogasana Meet - Day 2', type: 'competition', color: 'blue' },
+            '12': { name: 'Junior Yogasana Meet - Day 3', type: 'competition', color: 'blue' },
+            '15': { name: 'Talent Identification Camp', type: 'training', color: 'amber' },
+            '20': { name: 'International Team Selection', type: 'selection', color: 'rose' },
+            '25': { name: 'Fundraising Gala Dinner', type: 'fundraiser', color: 'purple' },
+            '30': { name: 'Sponsorship Meeting', type: 'meeting', color: 'slate' }
+        },
+        '7': { // August
+            '5': { name: 'Senior Athlete Assessment', type: 'assessment', color: 'green' },
+            '10': { name: 'International Rules Update Session', type: 'training', color: 'amber' },
+            '15': { name: 'Media Training Workshop', type: 'workshop', color: 'purple' },
+            '20': { name: 'Senior Invitational - Day 1', type: 'competition', color: 'green' },
+            '21': { name: 'Senior Invitational - Day 2', type: 'competition', color: 'green' },
+            '22': { name: 'Senior Invitational - Day 3', type: 'competition', color: 'green' },
+            '25': { name: 'National Team Announcement', type: 'announcement', color: 'green' },
+            '28': { name: 'International Competition Preparation', type: 'preparation', color: 'indigo' }
+        },
+        '8': { // September
+            '5': { name: 'Sub-Junior Registration Opens', type: 'registration', color: 'blue' },
+            '10': { name: 'Youth Development Workshop', type: 'workshop', color: 'purple' },
+            '15': { name: 'School Outreach Program', type: 'outreach', color: 'teal' },
+            '18': { name: 'Sub-Junior Championships - Day 1', type: 'competition', color: 'indigo' },
+            '19': { name: 'Sub-Junior Championships - Day 2', type: 'competition', color: 'indigo' },
+            '20': { name: 'Sub-Junior Championships - Day 3', type: 'competition', color: 'indigo' },
+            '25': { name: 'Parents Orientation Session', type: 'orientation', color: 'teal' },
+            '30': { name: 'Annual General Meeting', type: 'meeting', color: 'slate' }
+        },
+        '9': { // October
+            '5': { name: 'International Competition Departure', type: 'travel', color: 'teal' },
+            '10': { name: 'Asian Championships Participation', type: 'competition', color: 'rose' },
+            '15': { name: 'World Championship Qualifiers', type: 'competition', color: 'rose' },
+            '20': { name: 'Return from International Events', type: 'travel', color: 'teal' },
+            '25': { name: 'Achievement Awards Night', type: 'ceremony', color: 'yellow' },
+            '30': { name: 'Year-End Planning', type: 'planning', color: 'slate' }
+        },
+        '10': { // November
+            '5': { name: 'Coaches Appreciation Day', type: 'appreciation', color: 'yellow' },
+            '10': { name: 'Volunteer Recognition Event', type: 'appreciation', color: 'yellow' },
+            '15': { name: 'Annual Sports Awards', type: 'ceremony', color: 'yellow' },
+            '20': { name: 'Strategic Planning Workshop', type: 'workshop', color: 'purple' },
+            '25': { name: 'Budget Review Meeting', type: 'meeting', color: 'slate' },
+            '30': { name: 'Membership Renewal Deadline', type: 'registration', color: 'blue' }
+        },
+        '11': { // December
+            '5': { name: 'Year-End Celebration', type: 'celebration', color: 'pink' },
+            '10': { name: 'Athlete Holiday Camp', type: 'training', color: 'amber' },
+            '15': { name: 'Equipment Maintenance', type: 'maintenance', color: 'indigo' },
+            '20': { name: 'Office Year-End Closure', type: 'closure', color: 'slate' },
+            '25': { name: 'Christmas Break', type: 'holiday', color: 'red' },
+            '31': { name: 'New Year Preparation', type: 'preparation', color: 'indigo' }
+        }
+    }
+};
+
+// =============================================
+// FIXED CALENDAR FUNCTIONALITY
+// =============================================
+function initializeCalendar() {
+    renderCalendar(currentMonth, currentYear);
+    setupCalendarNavigation();
+}
+
+function renderCalendar(month, year) {
+    const calendarDays = document.getElementById('calendar-days');
+    const monthYearElement = document.getElementById('calendar-month-year');
+    
+    // Clear previous calendar
+    calendarDays.innerHTML = '';
+    
+    // Set month and year in header
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+    monthYearElement.textContent = `${monthNames[month]} ${year}`;
+    
+    // Get first day of month (day of week: 0 = Sunday, 1 = Monday, etc.)
+    const firstDay = new Date(year, month, 1);
+    const startingDay = firstDay.getDay();
+    
+    // Get number of days in month
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    
+    // Get today's date
+    const today = new Date();
+    
+    // Add empty cells for days before the first day of month
+    for (let i = 0; i < startingDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day empty';
+        calendarDays.appendChild(emptyDay);
+    }
+    
+    // Add days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.textContent = day;
+        dayElement.dataset.day = day;
+        dayElement.dataset.month = month;
+        dayElement.dataset.year = year;
+        
+        // Check if today
+        const isToday = day === today.getDate() && 
+                       month === today.getMonth() && 
+                       year === today.getFullYear();
+        
+        if (isToday) {
+            dayElement.classList.add('today');
+        }
+        
+        // Check if there's an event on this day
+        if (eventsData[year] && eventsData[year][month] && eventsData[year][month][day]) {
+            dayElement.classList.add('event-day');
+            const event = eventsData[year][month][day];
+            dayElement.title = event.name;
+        }
+        
+        // Add click event
+        dayElement.addEventListener('click', () => selectDay(day, month, year));
+        
+        calendarDays.appendChild(dayElement);
+    }
+}
+
+function setupCalendarNavigation() {
+    document.getElementById('prev-month').addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+    
+    document.getElementById('next-month').addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+    
+    document.getElementById('today-btn').addEventListener('click', () => {
+        const today = new Date();
+        currentMonth = today.getMonth();
+        currentYear = today.getFullYear();
+        renderCalendar(currentMonth, currentYear);
+    });
+}
+
+function selectDay(day, month, year) {
+    // Remove selected class from all days
+    document.querySelectorAll('.calendar-day').forEach(dayEl => {
+        dayEl.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked day
+    const dayElement = document.querySelector(`.calendar-day[data-day="${day}"][data-month="${month}"][data-year="${year}"]`);
+    if (dayElement) {
+        dayElement.classList.add('selected');
+    }
+    
+    // Show event details if available
+    showEventDetails(day, month, year);
+}
+
+function showEventDetails(day, month, year) {
+    const eventDetailsPanel = document.getElementById('event-details');
+    const eventTitle = document.getElementById('event-details-title');
+    const eventContent = document.getElementById('event-details-content');
+    
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    if (eventsData[year] && eventsData[year][month] && eventsData[year][month][day]) {
+        const event = eventsData[year][month][day];
+        const eventName = event.name;
+        eventTitle.textContent = `${monthNames[month]} ${day}, ${year}`;
+        
+        // Different event details based on event type
+        let eventDescription = '';
+        let eventTime = '9:00 AM - 5:00 PM';
+        let eventLocation = 'YSAM Headquarters, Mauritius';
+        let eventCategory = getEventCategory(event.type);
+        
+        // Set descriptions based on event type
+        if (event.type.includes('training') || event.type.includes('workshop')) {
+            eventDescription = 'Training session conducted by certified international Yogasana coaches. All registered participants must attend.';
+            eventLocation = 'YSAM Training Center';
+            eventTime = '3:00 PM - 6:00 PM';
+        } else if (event.type.includes('competition') || event.type.includes('championship')) {
+            eventDescription = 'Competitive event featuring top athletes from across Mauritius. International judges will be present.';
+            if (eventName.includes('National')) {
+                eventLocation = 'Port Louis Sports Complex';
+                eventTime = '8:00 AM - 8:00 PM';
+            } else if (eventName.includes('Junior')) {
+                eventLocation = 'Beau Bassin Sports Hall';
+                eventTime = '9:00 AM - 6:00 PM';
+            } else if (eventName.includes('Senior')) {
+                eventLocation = 'Curepipe Gymnasium';
+                eventTime = '10:00 AM - 7:00 PM';
+            } else if (eventName.includes('Sub-Junior')) {
+                eventLocation = 'Quatre Bornes Stadium';
+                eventTime = '9:00 AM - 5:00 PM';
+            }
+        } else if (event.type.includes('meeting')) {
+            eventDescription = 'Organizational meeting to discuss plans, strategies, and upcoming events.';
+            eventLocation = 'YSAM Conference Room';
+            eventTime = '2:00 PM - 4:00 PM';
+        } else if (event.type.includes('registration')) {
+            eventDescription = 'Registration period for upcoming events. Online and offline registration available. Early bird discounts apply.';
+            eventLocation = 'Online & YSAM Office';
+            eventTime = 'All Day';
+        } else if (event.type.includes('announcement')) {
+            eventDescription = 'Important announcement regarding YSAM activities, competitions, or results.';
+            eventLocation = 'YSAM Website & Social Media';
+            eventTime = '10:00 AM';
+        } else if (event.type.includes('ceremony') || event.type.includes('awards')) {
+            eventDescription = 'Award ceremony to recognize achievements and excellence in Yogasana sports.';
+            eventLocation = 'Mauritius Convention Center';
+            eventTime = '7:00 PM - 10:00 PM';
+        } else {
+            eventDescription = 'YSAM organized event. Please check with the office for more details.';
+        }
+        
+        eventContent.innerHTML = `
+            <div class="mb-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h4 class="text-xl font-bold text-blue-950">${eventName}</h4>
+                    <span class="bg-${event.color}-100 text-${event.color}-600 px-3 py-1 rounded-full text-xs font-bold">${eventCategory}</span>
+                </div>
+                <p class="text-slate-600">${eventDescription}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 bg-rose-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-clock text-rose-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500">Time</p>
+                        <p class="font-bold text-blue-950">${eventTime}</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt text-blue-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500">Location</p>
+                        <p class="font-bold text-blue-950">${eventLocation}</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-users text-green-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500">Participants</p>
+                        <p class="font-bold text-blue-950">All Registered Members</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="registerForEvent('${eventName}')" class="flex-1 bg-rose-600 text-white py-3 rounded-xl font-bold hover:bg-rose-700 transition">
+                    Register Now
+                </button>
+                <button onclick="showToast('Event added to your calendar!', 'success')" class="px-4 border border-rose-600 text-rose-600 py-3 rounded-xl font-bold hover:bg-rose-50 transition">
+                    <i class="fas fa-calendar-plus"></i>
+                </button>
+            </div>
+        `;
+        
+        eventDetailsPanel.style.display = 'block';
+    } else {
+        eventTitle.textContent = `${monthNames[month]} ${day}, ${year}`;
+        eventContent.innerHTML = `
+            <div class="text-center py-8">
+                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-calendar-plus text-slate-400 text-2xl"></i>
+                </div>
+                <h4 class="text-lg font-bold text-blue-950 mb-2">No Events Scheduled</h4>
+                <p class="text-slate-600 mb-6">There are no events scheduled for this day. Check back later for updates!</p>
+                <button onclick="openPage('events')" class="bg-blue-950 text-white px-6 py-3 rounded-xl font-bold hover:bg-rose-600 transition">
+                    View All Events
+                </button>
+            </div>
+        `;
+        eventDetailsPanel.style.display = 'block';
+    }
+}
+
+function getEventCategory(type) {
+    const categories = {
+        'training': 'Training',
+        'workshop': 'Workshop',
+        'competition': 'Competition',
+        'championship': 'Championship',
+        'meeting': 'Meeting',
+        'registration': 'Registration',
+        'announcement': 'Announcement',
+        'ceremony': 'Ceremony',
+        'selection': 'Selection',
+        'fundraiser': 'Fundraiser',
+        'assessment': 'Assessment',
+        'outreach': 'Outreach',
+        'orientation': 'Orientation',
+        'travel': 'Travel',
+        'appreciation': 'Appreciation',
+        'planning': 'Planning',
+        'celebration': 'Celebration',
+        'maintenance': 'Maintenance',
+        'holiday': 'Holiday',
+        'health': 'Health Check',
+        'arrival': 'Arrival',
+        'rehearsal': 'Rehearsal',
+        'certification': 'Certification',
+        'closure': 'Closure',
+        'preparation': 'Preparation'
+    };
+    
+    return categories[type] || 'Event';
+}
+
+// =============================================
+// INITIALIZE ON LOAD
+// =============================================
+window.addEventListener('load', () => {
+    // Check for saved page
+    const savedPage = sessionStorage.getItem('ysam_current_page');
+    if (savedPage && document.getElementById(savedPage)) {
+        openPage(savedPage);
+    }
+    
+    // Animate home page counters if on home page
+    if(document.getElementById('home').classList.contains('active')) {
+        setTimeout(() => animateCounters(), 500);
+    }
+    
+    // Handle image loading
+    handleImageLoad();
+    
+    // Initialize gender labels
+    document.querySelectorAll('input[name="gender"]').forEach(radio => {
+        const label = radio.nextElementSibling;
+        
+        radio.addEventListener('change', function() {
+            // Update all labels
+            document.querySelectorAll('.gender-label').forEach(l => {
+                l.style.borderColor = '';
+                l.style.transform = '';
+            });
+            
+            // Style selected label
+            if(this.checked) {
+                label.style.borderColor = '#e11d48';
+                label.style.transform = 'translateY(-2px)';
+            }
+            
+            localStorage.setItem('ysam_form_gender', this.value);
+        });
+        
+        // Hover effects
+        label.addEventListener('mouseenter', function() {
+            if(!radio.checked) {
+                this.style.borderColor = '#94a3b8';
+                this.style.transform = 'translateY(-2px)';
+            }
+        });
+        
+        label.addEventListener('mouseleave', function() {
+            if(!radio.checked) {
+                this.style.borderColor = '';
+                this.style.transform = '';
+            }
+        });
+    });
+    
+    // Initialize calendar if on events page
+    if(document.getElementById('events').classList.contains('active')) {
+        setTimeout(() => {
+            initializeCalendar();
+        }, 100);
+    }
+    
+    // News ticker pause on hover
+    const tickerTrack = document.querySelector('.ticker-track');
+    if (tickerTrack) {
+        tickerTrack.addEventListener('mouseenter', () => {
+            tickerTrack.style.animationPlayState = 'paused';
+        });
+        
+        tickerTrack.addEventListener('mouseleave', () => {
+            tickerTrack.style.animationPlayState = 'running';
+        });
+    }
+});
+
+// =============================================
+// EVENT LISTENERS FOR CLOSE FUNCTIONALITY
+// =============================================
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    
+    if(mobileMenu.classList.contains('active') && 
+       !mobileMenu.contains(e.target) && 
+       !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+});
+
+// Close registration sidebar when clicking on overlay
+document.getElementById('overlay').addEventListener('click', toggleSidebar);
+
+// Handle window resize
+let resizeTimeout;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        // Close mobile menu on larger screens
+        if (window.innerWidth > 768) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        }
+    }, 250);
+});
+
+// Prevent form submission on Enter key except for submit button
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.type !== 'submit' && e.target.tagName !== 'BUTTON') {
+        e.preventDefault();
+    }
+});
+
+// Add keyboard navigation for modals
+document.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape') {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+        const sidebar = document.getElementById('reg-sidebar');
+        if(sidebar.classList.contains('active')) {
+            toggleSidebar();
+        }
+    }
+});
+</script>
+
+</body>
+</html>
